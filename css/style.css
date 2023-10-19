@@ -3,3 +3,6 @@
   height: 80px; /* Adjust this value as needed to create the desired gap */
 }
 /* product page */
+.spacer-2 {
+  height: 30px;
+}

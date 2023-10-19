@@ -70,28 +70,28 @@
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <img
-                  src="../images/je-01-23-su/je-01-23-su-front.jpeg"
+                  src="../images/je-02-23-su/je-02-23-su-front.jpeg"
                   class="d-block w-100"
                   alt="je-01-21-su-front"
                 />
               </div>
               <div class="swiper-slide">
                 <img
-                  src="../images/je-01-23-su/je-01-23-su-back.jpeg"
+                  src="../images/je-02-23-su/je-02-23-su-back.jpeg"
                   class="d-block w-100"
                   alt="je-01-21-su-back"
                 />
               </div>
               <div class="swiper-slide">
                 <img
-                  src="../images/je-01-23-su/je-01-23-su-detail.jpeg"
+                  src="../images/je-02-23-su/je-02-23-su-detail.jpeg"
                   class="d-block w-100"
                   alt="je-01-21-su-detail"
                 />
               </div>
               <div class="swiper-slide">
                 <img
-                  src="../images/je-01-23-su/je-01-23-su-styled.jpeg"
+                  src="../images/je-02-23-su/je-02-23-su-styled.jpeg"
                   class="d-block w-100"
                   alt="je-01-21-su-styled"
                 />
@@ -105,10 +105,10 @@
 
         <div class="col-lg-6 order-lg-2">
           <div class="spacer-2"></div>
-          <h2>Straight Denim</h2>
+          <h2>Wide Denim</h2>
           <p class="text-muted">Price: $350.00</p>
           <div class="mb-3">
-            <select class="form-control" id="sizeSelect1">
+            <select class="form-control" id="sizeSelect2">
               <option value="" disabled selected>Choose Your Size</option>
               <option>Small</option>
               <option>Medium</option>
@@ -118,12 +118,12 @@
           </div>
           <div class="form-group d-flex">
             <button
-              id="addToBagButton1"
+              id="addToBagButton2"
               class="btn btn-dark text-white mb-3"
               data-product-id="product1"
               data-name="Product Name"
               data-price="50.00"
-              data-image="../images/je-01-23-su/je-01-23-su-front.jpeg"
+              data-image="../images/je-02-23-su/je-02-23-su-front.jpeg"
             >
               Add to Bag
             </button>
@@ -162,16 +162,16 @@
       });
 
       // size dropdown
-      const sizeSelect1 = document.getElementById('sizeSelect1');
+      const sizeSelect2 = document.getElementById('sizeSelect2');
 
       // "Add to Bag" button
-      const addToBagButton1 = document.getElementById('addToBagButton1');
+      const addToBagButton2 = document.getElementById('addToBagButton2');
 
-      addToBagButton1.addEventListener('click', function () {
-        const name = addToBagButton1.getAttribute('data-name');
-        const price = addToBagButton1.getAttribute('data-price');
-        const size = document.getElementById('sizeSelect1').value;
-        const image = addToBagButton1.getAttribute('data-image');
+      addToBagButton2.addEventListener('click', function () {
+        const name = addToBagButton2.getAttribute('data-name');
+        const price = addToBagButton2.getAttribute('data-price');
+        const size = document.getElementById('sizeSelect2').value;
+        const image = addToBagButton2.getAttribute('data-image');
 
         // Create an object to store the item details
         const item = {
