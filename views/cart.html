@@ -9,8 +9,14 @@
     />
     <link rel="stylesheet" href="../css/style.css" />
 
+    <style>
+      .product-image {
+        max-height: 120px; /* Limit the maximum height */
+        width: auto; /* Maintain aspect ratio */
+      }
+    </style>
+
     <title>Cart</title>
-    <!-- Add Bootstrap CSS and JS links here -->
   </head>
   <body>
     <!-- Navbar -->
@@ -22,12 +28,10 @@
         <!-- Right-aligned links using ml-auto class -->
         <ul class="navbar-nav d-flex flex-row align-items-center">
           <li class="nav-item">
-            <a class="nav-link text-dark" href="../views/cart.html">Shop</a>
+            <a class="nav-link text-dark" href="../views/shop.html">Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark ml-3" href="../views/shop.html"
-              >Cart</a
-            >
+            <a class="nav-link text-dark ml-3" href="#">Cart</a>
           </li>
         </ul>
       </div>
@@ -35,5 +39,37 @@
 
     <!-- Add a spacer div to create a gap below the navbar -->
     <div class="spacer"></div>
+
+    <!-- Cart Items Section -->
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-8">
+          <h3>Your Cart</h3>
+
+          <!-- Display Cart Items -->
+          <div id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h4>Total Price</h4>
+
+          <!-- Display Total Price -->
+          <div id="total-price">
+            <!-- Total price will be calculated and displayed here -->
+          </div>
+
+          <!-- Purchase Options -->
+          <div class="mt-4">
+            <h4>Purchase Options</h4>
+            <button class="btn btn-primary mb-2">Pay with PayPal</button>
+            <button class="btn btn-success">Pay with Credit Card</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include JavaScript to populate the cart items and calculate total price -->
+    <script src="../js/cart.js"></script>
   </body>
 </html>
