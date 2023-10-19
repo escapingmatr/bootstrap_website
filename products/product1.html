@@ -7,24 +7,36 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="../css/style.css" />
     <style>
-      .carousel-indicators li {
-        background-color: lightgrey; /* Inactive indicator color */
+      .swiper-pagination-bullet {
+        background-color: grey; /* Inactive indicator color */
       }
 
-      .carousel-indicators .active {
-        background-color: grey; /* Active indicator color */
+      .swiper-pagination-bullet-active {
+        background-color: rgb(67, 67, 67); /* Active indicator color */
+      }
+
+      .swiper-container {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .swiper-wrapper {
+        display: flex;
+        transition: transform 0.3s;
+      }
+
+      .swiper-slide {
+        width: 100%;
       }
     </style>
 
     <title>Product Page</title>
-    <!-- Add Bootstrap CSS and JS links here -->
   </head>
   <body>
     <!-- Navbar -->
@@ -52,57 +64,40 @@
       <div class="row">
         <!-- Product Image and Information Layout -->
         <div class="col-lg-6 order-lg-1">
-          <div
-            id="imageCarousel"
-            class="carousel slide"
-            data-ride="carousel"
-            data-touch="true"
-          >
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li
-                data-target="#imageCarousel"
-                data-slide-to="0"
-                class="active"
-              ></li>
-              <li data-target="#imageCarousel" data-slide-to="1"></li>
-              <li data-target="#imageCarousel" data-slide-to="2"></li>
-              <li data-target="#imageCarousel" data-slide-to="3"></li>
-
-              <!-- Add more list items for additional images -->
-            </ol>
-
-            <div class="carousel-inner">
-              <div class="carousel-item active">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
                 <img
                   src="../images/je-01-23-su/je-01-23-su-front.jpeg"
                   class="d-block w-100"
                   alt="je-01-21-su-front"
                 />
               </div>
-              <div class="carousel-item">
+              <div class="swiper-slide">
                 <img
                   src="../images/je-01-23-su/je-01-23-su-back.jpeg"
                   class="d-block w-100"
                   alt="je-01-21-su-back"
                 />
               </div>
-              <div class="carousel-item">
+              <div class="swiper-slide">
                 <img
                   src="../images/je-01-23-su/je-01-23-su-detail.jpeg"
                   class="d-block w-100"
                   alt="je-01-21-su-detail"
                 />
               </div>
-              <div class="carousel-item">
+              <div class="swiper-slide">
                 <img
                   src="../images/je-01-23-su/je-01-23-su-styled.jpeg"
                   class="d-block w-100"
                   alt="je-01-21-su-styled"
                 />
               </div>
-              <!-- Add more carousel items for additional images -->
             </div>
+
+            <!-- Pagination (optional) -->
+            <div class="swiper-pagination"></div>
           </div>
         </div>
 
@@ -110,29 +105,67 @@
           <h2>Product Name</h2>
           <p class="text-muted">Price: $50.00</p>
           <div class="mb-3">
-            <label for="sizeSelect">Select Size</label>
             <select class="form-control" id="sizeSelect">
+              <option value="" disabled selected>Choose Your Size</option>
               <option>Small</option>
               <option>Medium</option>
               <option>Large</option>
             </select>
           </div>
-          <button class="btn btn-primary mb-3">Add to Bag</button>
-          <h3>Item Information</h3>
+          <div class="form-group d-flex">
+            <button
+              id="addToBagButton"
+              class="btn btn-dark text-white flex-fill"
+              disabled
+            >
+              Add to Bag
+            </button>
+          </div>
+          <h4>Description</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <h3>Materials</h3>
+          <h4>Materials</h4>
           <p>Material 1, Material 2</p>
-          <h3>Care Instructions</h3>
+          <h4>Care Instructions</h4>
           <p>Machine wash cold. Tumble dry low.</p>
         </div>
       </div>
     </div>
 
-    <!-- PayPal Buttons (you can include your PayPal button code here) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
-    <script src="js/main.js"></script>
+    <!-- Include Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+      // swiper
+      var mySwiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        autoplay: {
+          delay: 5000, // 5000ms = 5 seconds
+          disableOnInteraction: true, // Allows manual navigation without stopping autoplay
+        },
+      });
+
+      // Get references to the size dropdown and the "Add to Bag" button
+      const sizeSelect = document.getElementById('sizeSelect');
+      const addToBagButton = document.getElementById('addToBagButton');
+
+      // Add an event listener to the size dropdown to check for a valid selection
+      sizeSelect.addEventListener('change', function () {
+        if (sizeSelect.value) {
+          addToBagButton.disabled = false; // Enable the button when a valid size is chosen
+        } else {
+          addToBagButton.disabled = true; // Disable the button if no size is selected
+        }
+      });
+    </script>
   </body>
 </html>
