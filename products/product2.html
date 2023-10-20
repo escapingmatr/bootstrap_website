@@ -12,6 +12,11 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+
     <style>
       .swiper-pagination-bullet {
         background-color: grey; /* Inactive indicator color */
@@ -51,9 +56,9 @@
             <a class="nav-link text-dark" href="../views/shop.html">Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark ml-3" href="../views/cart.html"
-              >Cart</a
-            >
+            <a class="nav-link text-dark ml-3" href="../views/cart.html">
+              <i class="fas fa-shopping-bag"></i>
+            </a>
           </li>
         </ul>
       </div>
@@ -190,7 +195,7 @@
         // Store the updated cart array in local storage
         localStorage.setItem('intentions-cart', JSON.stringify(items));
 
-        alert('Item added to the cart.');
+        alert('Item added to your shopping bag.');
 
         // You can also redirect the user to the cart page if needed
         // window.location.href = '../views/cart.html';

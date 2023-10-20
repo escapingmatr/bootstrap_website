@@ -8,6 +8,10 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
 
     <style>
       .product-image {
@@ -34,7 +38,9 @@
             <a class="nav-link text-dark" href="../views/shop.html">Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark ml-3" href="">Cart</a>
+            <a class="nav-link text-dark ml-3" href="">
+              <i class="fas fa-shopping-bag"></i>
+            </a>
           </li>
         </ul>
       </div>
@@ -47,7 +53,7 @@
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-8">
-          <h3>Your Cart</h3>
+          <h3>Your Shopping Bag</h3>
 
           <!-- Display Cart Items -->
           <div id="cart-items">
@@ -65,8 +71,8 @@
           <!-- Purchase Options -->
           <div class="mt-4">
             <h4>Purchase Options</h4>
-            <button class="btn btn-primary mb-2">Pay with PayPal</button>
-            <button class="btn btn-success">Pay with Credit Card</button>
+            <button class="btn btn-dark mb-2">Pay with PayPal</button>
+            <button class="btn btn-dark">Pay with Credit Card</button>
           </div>
         </div>
       </div>
