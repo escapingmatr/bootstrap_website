@@ -99,11 +99,11 @@
       </div>
     </div>
 
-    <!-- Paypal API -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AfwIlt0ej1NQBQFHqN1hJJe1ipYhmEIMcsSX9stMRtlknQdXMnXdMTdJfeFK8FC4Ksl3Jg2P9dmMplye"></script>
-
     <!-- Include JavaScript to populate the cart items and calculate total price -->
     <script src="../js/checkout.js"></script>
+
+    <!-- Paypal API -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AfwIlt0ej1NQBQFHqN1hJJe1ipYhmEIMcsSX9stMRtlknQdXMnXdMTdJfeFK8FC4Ksl3Jg2P9dmMplye"></script>
 
     <script>
       paypal
@@ -121,6 +121,10 @@
           },
           onApprove: function (data, actions) {
             return actions.order.capture().then(function (details) {
+              // send email to owner
+              // send email to customer
+              // empty the intentions-cart
+              // push to thank you page
               alert('Payment completed.');
               // You can add more handling here
             });
