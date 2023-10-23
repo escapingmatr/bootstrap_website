@@ -21,9 +21,6 @@
       .btn {
         width: 100%;
       }
-      .paypal-image {
-        height: 20px;
-      }
     </style>
 
     <title>Cart</title>
@@ -82,41 +79,15 @@
 
           <!-- Purchase Options -->
           <div class="mt-4" id="purchase-options">
-            <h4>Purchase Options</h4>
-            <div id="paypal-button-container"></div>
+            <button class="btn btn-dark" onclick="proceedCheckout()">
+              Proceed to Checkout
+            </button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Paypal API -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AfwIlt0ej1NQBQFHqN1hJJe1ipYhmEIMcsSX9stMRtlknQdXMnXdMTdJfeFK8FC4Ksl3Jg2P9dmMplye"></script>
-
     <!-- Include JavaScript to populate the cart items and calculate total price -->
     <script src="../js/cart.js"></script>
-
-    <script>
-      paypal
-        .Buttons({
-          createOrder: function (data, actions) {
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    value: calculateTotalDollar(), // Dynamically calculate the total amount
-                  },
-                },
-              ],
-            });
-          },
-          onApprove: function (data, actions) {
-            return actions.order.capture().then(function (details) {
-              alert('Payment completed.');
-              // You can add more handling here
-            });
-          },
-        })
-        .render('#paypal-button-container');
-    </script>
   </body>
 </html>

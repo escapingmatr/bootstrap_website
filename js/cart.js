@@ -27,7 +27,7 @@ function displayCartItems() {
           <p>Size: ${item.size}</p>
         </div>
         <div class="cart-item-right">
-          <p>Price: $${item.price}</p>
+          <p>$${item.price}</p>
           <div class="remove-button-wrapper">
             <button class="btn btn-dark remove-button" onclick="removeCartItem(${index})">Remove</button>
           </div>
@@ -94,6 +94,10 @@ function updateCartDisplay() {
 
 function startShopping() {
   window.location.href = '../views/shop.html'; // Redirect to the shop page
+}
+
+function proceedCheckout() {
+  window.location.href = '../views/checkout.html'; // Redirect to the shop page
 }
 
 // When the page loads, display cart items and total price

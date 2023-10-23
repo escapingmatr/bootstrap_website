@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+
+    <style>
+      .product-image {
+        max-height: 120px; /* Limit the maximum height */
+        width: auto; /* Maintain aspect ratio */
+      }
+      .btn {
+        width: 100%;
+      }
+    </style>
+
+    <title>Checkout</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+      <div class="container">
+        <!-- Left-aligned "Home" link -->
+        <a class="navbar-brand" href="../index.html">INTENTIONS</a>
+
+        <!-- Right-aligned links using ml-auto class -->
+        <ul class="navbar-nav d-flex flex-row align-items-center">
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="../views/shop.html">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark ml-3" href="../views/cart.html">
+              <i class="fas fa-shopping-bag"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Add a spacer div to create a gap below the navbar -->
+    <div class="spacer"></div>
+
+    <!-- Cart Items Section -->
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-8">
+          <h4>Checkout</h4>
+          <div class="checkout-page-line"></div>
+          <!-- Item Selection Section -->
+          <div id="checkout-items">
+            <!-- List of selected items with prices -->
+          </div>
+
+          <!-- User Information Input Section -->
+          <div id="user-info">
+            <h4>Shipping Information</h4>
+            <div class="checkout-page-line"></div>
+            <!-- Form fields for user info (name, address, etc.) -->
+            <button id="calculate-shipping">Calculate Shipping</button>
+          </div>
+
+          <!-- Shipping Cost Calculator Section -->
+          <div id="shipping-cost">
+            <!-- Display shipping options and costs -->
+          </div>
+
+          <!-- Payment Buttons Section -->
+        </div>
+        <div class="col-md-4">
+          <h4>Total Price</h4>
+
+          <div class="checkout-page-line"></div>
+          <!-- Display Total Price -->
+          <div id="checkout-total-components">
+            <!-- Component prices will be calculated and displayed here -->
+          </div>
+          <div class="checkout-page-line"></div>
+          <div id="checkout-total">
+            <!-- Total price will be calculated and displayed here -->
+          </div>
+          <div class="mt-4" id="purchase-options">
+            <div id="payment-buttons">
+              <h4>Purchase Options</h4>
+              <div class="checkout-page-line"></div>
+              <!-- PayPal payment buttons -->
+              <div id="paypal-button-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paypal API -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AfwIlt0ej1NQBQFHqN1hJJe1ipYhmEIMcsSX9stMRtlknQdXMnXdMTdJfeFK8FC4Ksl3Jg2P9dmMplye"></script>
+
+    <!-- Include JavaScript to populate the cart items and calculate total price -->
+    <script src="../js/checkout.js"></script>
+
+    <script>
+      paypal
+        .Buttons({
+          createOrder: function (data, actions) {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: calculateTotalDollar(), // Dynamically calculate the total amount
+                  },
+                },
+              ],
+            });
+          },
+          onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
+              alert('Payment completed.');
+              // You can add more handling here
+            });
+          },
+        })
+        .render('#paypal-button-container');
+    </script>
+  </body>
+</html>
