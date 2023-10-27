@@ -129,6 +129,7 @@
               data-name="Wide Denim"
               data-price="350.00"
               data-image="../images/je-02-23-su/je-02-23-su-front.jpeg"
+              disabled
             >
               Add to Bag
             </button>
@@ -171,6 +172,15 @@
 
       // "Add to Bag" button
       const addToBagButton2 = document.getElementById('addToBagButton2');
+
+      sizeSelect2.addEventListener('change', function () {
+        // Check if a size is selected
+        if (sizeSelect2.value !== '') {
+          addToBagButton2.removeAttribute('disabled'); // Enable the button
+        } else {
+          addToBagButton2.setAttribute('disabled', 'true'); // Disable the button
+        }
+      });
 
       addToBagButton2.addEventListener('click', function () {
         const name = addToBagButton2.getAttribute('data-name');

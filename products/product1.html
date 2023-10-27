@@ -129,6 +129,7 @@
               data-name="Straight Denim"
               data-price="350.00"
               data-image="../images/je-01-23-su/je-01-23-su-front.jpeg"
+              disabled
             >
               Add to Bag
             </button>
@@ -171,6 +172,15 @@
 
       // "Add to Bag" button
       const addToBagButton1 = document.getElementById('addToBagButton1');
+
+      sizeSelect1.addEventListener('change', function () {
+        // Check if a size is selected
+        if (sizeSelect1.value !== '') {
+          addToBagButton1.removeAttribute('disabled'); // Enable the button
+        } else {
+          addToBagButton1.setAttribute('disabled', 'true'); // Disable the button
+        }
+      });
 
       addToBagButton1.addEventListener('click', function () {
         const name = addToBagButton1.getAttribute('data-name');
