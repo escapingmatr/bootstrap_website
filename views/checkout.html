@@ -21,6 +21,36 @@
       .btn {
         width: 100%;
       }
+      #free-shipping-info {
+        display: flex;
+        align-items: center;
+        cursor: help; /* Change cursor to a question mark on hover */
+        height: 24px;
+        margin-bottom: 16px;
+      }
+
+      #free-shipping-icon {
+        font-size: 16px;
+        color: black; /* Change the color as needed */
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      #free-shipping-text {
+        font-size: 12px;
+      }
+
+      .shipping-cost-info {
+        display: flex;
+      }
+
+      #free-shipping-text {
+        display: none;
+      }
+
+      #free-shipping-info:hover #free-shipping-text {
+        display: inline; /* Display the text when the icon's parent is hovered */
+      }
     </style>
 
     <title>Checkout</title>
@@ -31,18 +61,6 @@
       <div class="container">
         <!-- Left-aligned "Home" link -->
         <a class="navbar-brand" href="../index.html">INTENTIONS</a>
-
-        <!-- Right-aligned links using ml-auto class -->
-        <ul class="navbar-nav d-flex flex-row align-items-center">
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="../views/shop.html">Shop</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark ml-3" href="../views/cart.html">
-              <i class="fas fa-shopping-bag"></i>
-            </a>
-          </li>
-        </ul>
       </div>
     </nav>
 
@@ -62,7 +80,7 @@
 
           <!-- User Information Input Section -->
           <div id="user-info">
-            <h4>Shipping Information</h4>
+            <h4>Shipping</h4>
             <div class="checkout-page-line"></div>
             <!-- Form fields for user info (name, address, etc.) -->
             <button id="calculate-shipping">Calculate Shipping</button>
@@ -121,7 +139,7 @@
           },
           onApprove: function (data, actions) {
             return actions.order.capture().then(function (details) {
-              // send email to owner
+              // send email to business owner
               // send email to customer
               // empty the intentions-cart
               // push to thank you page

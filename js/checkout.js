@@ -41,9 +41,9 @@ function calculateTotalPrice() {
   const compTotalPriceDiv = document.getElementById(
     'checkout-total-components'
   );
-  const subtotal = calculateTotalDollar();
-  const shipping = 0;
-  const taxes = 0;
+  const subtotal = calculateSubtotal();
+  const shipping = calculateShipping();
+  const taxes = calculateTax();
 
   const checkoutTotalComponents = document.createElement('div');
   checkoutTotalComponents.className = 'checkout-total-components';
@@ -51,13 +51,19 @@ function calculateTotalPrice() {
   checkoutTotalComponents.innerHTML = `
     <div class="total-left">
       <p>Subtotal</p>
-      <p>Shipping</p>
+      <div class="shipping-cost-info">
+        <p>Shipping</p>
+        <div id="free-shipping-info">
+          <i class="fas fa-info-circle" id="free-shipping-icon"></i>
+          <span id="free-shipping-text">Free shipping over $300</span>
+        </div>
+      </div>
       <p>Taxes</p>
     </div>
     <div class="total-right">
-      <p>${subtotal}</p>
-      <p>${shipping}</p>
-      <p>${taxes}</p>
+      <p>$${subtotal.toFixed(2)}</p>
+      <p>$${shipping.toFixed(2)}</p>
+      <p>$${taxes.toFixed(2)}</p>
     </div>
   `;
 
@@ -74,39 +80,50 @@ function calculateTotalPrice() {
       <p>Total</p>
     </div>
     <div class="total-right">
-      <p>${total}</p>
+      <p>$${total.toFixed(2)}</p>
     </div>
   `;
 
   totalPriceDiv.appendChild(checkoutTotal);
 }
 
-function calculateSubtotalPrice() {
+function calculateSubtotal() {
   const cartItems = loadCartItems();
-  const subtotalPriceDiv = document.getElementById('subtotal-price');
-
-  const total = cartItems.reduce(
+  const subtotal = cartItems.reduce(
     (sum, item) => sum + parseFloat(item.price),
     0
   );
-  subtotalPriceDiv.textContent = `Subtotal: $${total.toFixed(2)}`;
+
+  return subtotal;
+}
+
+function calculateShipping() {
+  const subtotal = calculateSubtotal();
+
+  return subtotal >= 300 ? 0 : 25;
+}
+
+function calculateTax() {
+  const subtotal = calculateSubtotal();
+  const shipping = calculateShipping();
+  const tax = (subtotal + shipping) * 0.13;
+
+  return tax;
 }
 
 function calculateTotalDollar() {
-  const cartItems = loadCartItems();
-  const totalPriceDiv = document.getElementById('total-price');
+  const subtotal = calculateSubtotal();
+  const shipping = calculateShipping();
+  const total = (subtotal + shipping) * 1.13;
 
-  const total = cartItems.reduce(
-    (sum, item) => sum + parseFloat(item.price),
-    0
-  );
-  return total;
+  return total.toFixed(2);
 }
 
 // When the page loads, display cart items and total price
 window.addEventListener('load', () => {
   displayCheckoutItems();
+  calculateShipping();
+  calculateTax();
   calculateTotalPrice();
-  calculateSubtotalPrice();
-  updateCartDisplay();
+  calculateTotalDollar();
 });
