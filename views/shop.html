@@ -17,6 +17,11 @@
       .btn {
         width: 100%;
       }
+      /* Override anchor styles to maintain text color */
+      .card-link {
+        color: inherit;
+        text-decoration: none;
+      }
     </style>
     <title>Shop</title>
     <!-- Add Bootstrap CSS and JS links here -->
@@ -50,36 +55,37 @@
       <div class="row">
         <!-- Example product card (repeat for each product) -->
         <div class="col-md-4">
-          <div class="card">
-            <img
-              src="../images/je-01-23-su/je-01-23-su-front.jpeg"
-              class="card-img-top"
-              alt="Product 1"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Straight Denim</h5>
-              <p class="card-text">$350.00</p>
-              <a href="../products/product1.html" class="btn btn-dark"
-                >View Details</a
-              >
+          <a href="../products/product1.html" class="card-link">
+            <div class="card">
+              <img
+                src="../images/je-01-23-su/je-01-23-su-front.jpeg"
+                class="card-img-top"
+                alt="Product 1"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Straight Denim</h5>
+                <p class="card-text">$350.00</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
         <div class="col-md-4">
-          <div class="card">
-            <img
-              src="../images/je-02-23-su/je-02-23-su-front.jpeg"
-              class="card-img-top"
-              alt="Product 2"
-            />
-            <div class="card-body">
-              <h5 class="card-title">Wide Denim</h5>
-              <p class="card-text">$350.00</p>
-              <a href="../products/product2.html" class="btn btn-dark"
-                >View Details</a
-              >
+          <a href="../products/product2.html" class="card-link">
+            <div class="card">
+              <img
+                src="../images/je-02-23-su/je-02-23-su-front.jpeg"
+                class="card-img-top"
+                alt="Product 2"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Wide Denim</h5>
+                <p class="card-text">$350.00</p>
+                <!-- <a href="../products/product2.html" class="btn btn-dark"
+                  >View Details</a
+                > -->
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
