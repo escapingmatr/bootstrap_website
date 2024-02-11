@@ -1,6 +1,13 @@
+@font-face {
+  font-family: 'ToughCookiesBold'; /* Use a unique name for your font */
+  src: url('../fonts/ToughCookies-Bold.ttf') format('truetype'); /* Adjust the path to your font file */
+}
 /* nav bar */
 .spacer {
   height: 80px; /* Adjust this value as needed to create the desired gap */
+}
+.navbar-brand {
+  font-family: 'ToughCookiesBold'; /* Use the same unique name as in @font-face */
 }
 /* product page */
 .spacer-2 {
