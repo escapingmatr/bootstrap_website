@@ -205,7 +205,7 @@
         // Store the updated cart array in local storage
         localStorage.setItem('intentions-cart', JSON.stringify(items));
 
-        alert('Item added to your shopping bag.');
+        window.location.href = '../views/cart.html';
 
         // You can also redirect the user to the cart page if needed
         // window.location.href = '../views/cart.html';
