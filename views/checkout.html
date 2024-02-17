@@ -142,6 +142,9 @@
       window.addEventListener('load', function () {
         document.getElementById('loading-spinner').style.display = 'none';
       });
+    </script>
+
+    <script>
       paypal
         .Buttons({
           createOrder: function (data, actions) {
@@ -162,8 +165,9 @@
               // empty the intentions-cart
               localStorage.setItem('intentions-cart', JSON.stringify([]));
               // push to thank you page
-              alert('Payment completed.');
+              // alert('Payment completed.');
               // You can add more handling here
+              window.location.href = '../views/exit.html';
             });
           },
         })
